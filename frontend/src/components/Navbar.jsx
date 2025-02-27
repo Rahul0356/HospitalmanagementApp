@@ -5,11 +5,11 @@ import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     const navigate = useNavigate()
-    const [showMenu,setShowMenu]= useState(false)
+    const [showMenu, setShowMenu] = useState(false)
     const [token,setToken] = useState(true)
   return (
     <div className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400'>
-        <img  className='w-44 cursor-pointer' src={assets.logo} alt=""/>
+        <img onClick={()=>navigate('/')}  className='w-44 cursor-pointer' src={assets.logo} alt=""/>
         <ul className="hidden  md:flex items-start gap-5 font-medium">
             <NavLink to='/'>
                 <li className='py-1'>Home</li>
@@ -39,7 +39,7 @@ const Navbar = () => {
                 <div className='min-w-48 bg-white rounded shadow-lg flex flex-col gap-4 p-4'>
 
 
-                <p onClick={() => navigate('/my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
+                  <p onClick={() => navigate('/my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
                   <p onClick={() => navigate('/my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
                   <p onClick={()=>setToken(false)} className='hover:text-black cursor-pointer'>Logout</p>
                     </div>
@@ -48,7 +48,8 @@ const Navbar = () => {
             ):(
             <button onClick={()=>navigate('/login')}
              className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block'>Create Account</button>
-       ) }  
+       ) }
+       <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />  
         </div>
     </div>
   )
